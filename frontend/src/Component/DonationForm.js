@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./DonationForm.css";
 
 const DonationForm = () => {
   const [formData, setFormData] = useState({
-    association: "NONE",
+    association: "",
     firstName: "",
     lastName: "",
     gender: "",
@@ -18,7 +19,7 @@ const DonationForm = () => {
     phoneNoOfRelative: "",
     nameOfFriend: "",
     phoneOfFriend: "",
-    agreeToTerms: false, // Match with backend model
+    agreeToTerms: false,
   });
 
   const handleChange = (e) => {
@@ -33,12 +34,12 @@ const DonationForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/forms/submit-form", // Backend URL
+        "http://localhost:5000/api/forms/submit-form", // Replace with your backend URL
         formData
       );
       alert(response.data.message);
       setFormData({
-        association: "NONE",
+        association: "",
         firstName: "",
         lastName: "",
         gender: "",
@@ -53,7 +54,7 @@ const DonationForm = () => {
         phoneNoOfRelative: "",
         nameOfFriend: "",
         phoneOfFriend: "",
-        agreeToTerms: false, // Reset state
+        agreeToTerms: false,
       });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -62,17 +63,32 @@ const DonationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: "600px", margin: "auto" }}>
-      <h2>Eye Donation Form</h2>
+    <form onSubmit={handleSubmit}>
+      <h2>DONOR'S REGISTRATION FORM</h2>
       <div>
-        <label>In Association:</label>
-        <input
-          type="text"
+        <label htmlFor="association">In Association:</label>
+        <select
           name="association"
+          id="association"
           value={formData.association}
           onChange={handleChange}
-          disabled
-        />
+          required
+        >
+          <option value="">None</option>
+          <option value="JCI Midtown Gorakhpur">JCI Midtown Gorakhpur</option>
+    <option value="Lodge Wallace 99">Lodge Wallace 99</option>
+    <option value="Lodge Wgeel Club">Lodge Wgeel Club</option>
+    <option value="Media">Media</option>
+    <option value="NONE">NONE</option>
+    <option value="Rotary Club Euphoria">Rotary Club Euphoria</option>
+    <option value="Rotary Club Gorakhpur">Rotary Club Gorakhpur</option>
+    <option value="Rotary Club Midtown">Rotary Club Midtown</option>
+    <option value="Rotary Club of Gorakhpur Yugal">Rotary Club of Gorakhpur Yugal</option>
+    <option value="Saksham">Saksham</option>
+    <option value="Student">Student</option>
+    <option value="Teacher">Teacher</option>
+    <option value="Vyapar Mandal Gorakhpur">Vyapar Mandal Gorakhpur</option>
+        </select>
       </div>
       <div>
         <label>First Name:</label>
@@ -96,7 +112,7 @@ const DonationForm = () => {
       </div>
       <div>
         <label>Gender:</label>
-        <div>
+        <div className="radio-group">
           <label>
             <input
               type="radio"
@@ -232,7 +248,7 @@ const DonationForm = () => {
         <label>
           <input
             type="checkbox"
-            name="agreeToTerms" // Match with backend model
+            name="agreeToTerms"
             checked={formData.agreeToTerms}
             onChange={handleChange}
             required

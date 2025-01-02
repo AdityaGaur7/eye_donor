@@ -23,7 +23,7 @@ const DonationList = () => {
   }, [currentPage, itemsPerPage]);  
   const formatDate = (date) => {
     const d = new Date(date);
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
     const day = d.getDate();
     const month = months[d.getMonth()];
     const year = d.getFullYear();
@@ -75,9 +75,9 @@ const DonationList = () => {
               <td>{donor.gender}</td>
               <td>{donor.address}</td>
               <td>{donor.association}</td>
-              <td>{donor.stateName || ''}</td> {/* Display empty string if no state name */}
-              <td>{donor.cityName || ''}</td> {/* Display empty string if no city name */}
-              <td>{donor.districtName || ''}</td> {/* Display empty string if no district name */}
+              <td>{donor.stateName || ''}</td>
+              <td>{donor.cityName || ''}</td> 
+              <td>{donor.districtName || ''}</td>
               <td>{donor.postalCode}</td>
               <td>{donor.nameOfRelative} ({donor.phoneNoOfRelative})</td>
               <td>{formatDate(donor.submittedAt)}</td>
