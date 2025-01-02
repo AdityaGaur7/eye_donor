@@ -80,15 +80,29 @@ const DonationForm = () => {
               <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                   <div className="col-12">
-                    <label className="form-label">In Association:</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="association"
-                      value={formData.association}
-                      onChange={handleChange}
-                      disabled
-                    />
+                  <label htmlFor="association">In Association:</label>
+        <select
+          name="association"
+          id="association"
+          value={formData.association}
+          onChange={handleChange}
+          required
+        >
+          <option value="">None</option>
+          <option value="JCI Midtown Gorakhpur">JCI Midtown Gorakhpur</option>
+    <option value="Lodge Wallace 99">Lodge Wallace 99</option>
+    <option value="Lodge Wgeel Club">Lodge Wgeel Club</option>
+    <option value="Media">Media</option>
+    <option value="NONE">NONE</option>
+    <option value="Rotary Club Euphoria">Rotary Club Euphoria</option>
+    <option value="Rotary Club Gorakhpur">Rotary Club Gorakhpur</option>
+    <option value="Rotary Club Midtown">Rotary Club Midtown</option>
+    <option value="Rotary Club of Gorakhpur Yugal">Rotary Club of Gorakhpur Yugal</option>
+    <option value="Saksham">Saksham</option>
+    <option value="Student">Student</option>
+    <option value="Teacher">Teacher</option>
+    <option value="Vyapar Mandal Gorakhpur">Vyapar Mandal Gorakhpur</option>
+        </select>
                   </div>
 
                   <div className="col-md-6">

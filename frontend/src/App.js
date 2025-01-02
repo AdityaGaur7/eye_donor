@@ -1,6 +1,6 @@
 import React from 'react';
 import DonationForm from './Component/DonationForm';
-import DonationList from './Component/DonationList'; // Add this import
+import DonationList from './Component/DonorList/DonationList'; // Add this import
 import GenerateCertificate from './Component/GenerateCertificate';
 import { Route, Routes } from 'react-router-dom';
 
