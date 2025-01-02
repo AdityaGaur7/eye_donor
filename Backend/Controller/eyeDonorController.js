@@ -39,3 +39,30 @@ exports.getDonorsList = async (req, res) => {
     res.status(500).json({ message: 'Error fetching donors list', error });
   }
 };
+
+// Add this function to your existing controller
+exports.getDonorById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const donor = await FormModel.findById(id);
+        
+        if (!donor) {
+            return res.status(404).json({ 
+                success: false, 
+                message: "Donor not found" 
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: donor
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error fetching donor details",
+            error: error.message
+        });
+    }
+};
+

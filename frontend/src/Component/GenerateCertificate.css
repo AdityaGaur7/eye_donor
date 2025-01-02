@@ -1,0 +1,32 @@
+.certificate-content {
+    padding: 20px;
+}
+
+.certificate-content strong {
+    color: #2c3e50;
+}
+
+@media print {
+    .btn {
+        display: none;
+    }
+
+    .card {
+        border: none;
+        box-shadow: none !important;
+    }
+
+    .certificate-content {
+        padding: 0;
+    }
+}
+
+.card {
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    padding: 10px 25px;
+    font-weight: 500;
+} 
