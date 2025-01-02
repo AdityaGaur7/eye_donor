@@ -1,0 +1,120 @@
+/* General Font Style for Table */
+table, th, td {
+    font-family: 'Arial', sans-serif; /* or any other font family of your choice */
+}
+
+/* Style for the donation list table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for table cells */
+th, td {
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 16px;
+    border-right: 1px solid #ddd; /* Adding right border to each cell (vertical column lines) */
+}
+
+/* Remove the row line */
+th, td {
+    border-bottom: none; /* No horizontal row lines */
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #f9f9f9;
+    color: #555;
+}
+
+/* Alternate row background color */
+tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on table rows */
+tr:hover td {
+    background-color: #f1f1f1;
+}
+
+/* Table Heading Styles */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Pagination Container */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.pagination button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination .active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Responsive Design for Smaller Screens */
+@media screen and (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    th {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}

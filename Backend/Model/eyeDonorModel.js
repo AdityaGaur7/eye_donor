@@ -16,7 +16,8 @@ const eyeDonorSchema = new mongoose.Schema({
   relativePhone: { type: String },
   friendName: { type: String },
   friendPhone: { type: String },
-  agreeToTerms: { type: Boolean, required: true }, // Fixed the field name
+  submittedAt: { type: Date, default: Date.now },
+  agreeToTerms: { type: Boolean, required: true },
 }, { timestamps: true });
 
 module.exports = mongoose.model('EyeDonor', eyeDonorSchema);
