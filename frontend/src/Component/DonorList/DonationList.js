@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './DonationList.css';
+import { useNavigate } from 'react-router-dom';
 
 const DonationList = () => {
   const [donors, setDonors] = useState([]);
   const [totalDonors, setTotalDonors] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-
+const navigate= useNavigate();
   // Fetch Donors with Pagination
   useEffect(() => {
     const fetchDonors = async () => {
@@ -53,6 +54,12 @@ const DonationList = () => {
   return (
     <div>
       <h2>Donors List</h2>
+      <button 
+          className="btn btn-outline-secondary m-4"
+          onClick={() => navigate('/')}
+        >
+          Add Donor
+        </button>
       <table>
         <thead>
           <tr>
@@ -66,6 +73,8 @@ const DonationList = () => {
             <th>Postal Code</th>
             <th>Relative List</th>
             <th>Submission Date</th>
+            <th>Actions</th>
+
           </tr>
         </thead>
         <tbody>
@@ -81,6 +90,11 @@ const DonationList = () => {
               <td>{donor.postalCode}</td>
               <td>{donor.nameOfRelative} ({donor.phoneNoOfRelative})</td>
               <td>{formatDate(donor.submittedAt)}</td>
+              <td> <button 
+          className="btn btn-outline-primary m-4"
+          onClick={() => navigate(`/generate-certificate/${donor._id}`)}
+        >Generate Certificate
+        </button></td>
             </tr>
           ))}
         </tbody>
