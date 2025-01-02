@@ -5,6 +5,18 @@
 .certificate-content strong {
     color: #2c3e50;
 }
+.certificate img{
+    /* background: url('../../public/certificate.jpg') no-repeat; */
+
+    width: 100%;
+    height: 100vh;
+}
+.certificate-details{
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 16%;
+}
 
 @media print {
     .btn {

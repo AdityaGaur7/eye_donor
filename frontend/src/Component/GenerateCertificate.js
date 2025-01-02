@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './GenerateCertificate.css';
-
+import Certificate from "../assets/certificate.jpg"
 const GenerateCertificate = () => {
     const [donor, setDonor] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -30,78 +30,20 @@ const GenerateCertificate = () => {
     if (!donor) return <div className="text-center p-5">Donor not found</div>;
 
     return (
-        <div className="container py-5">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card shadow">
-                        <div className="card-body">
-                            <h2 className="text-center mb-4">Eye Donation Certificate</h2>
-                            <div className="certificate-content">
-                                <div className="row mb-3">
-                                    <div className="col-md-6">
-                                        <strong>Name:</strong> {donor.firstName} {donor.lastName}
-                                    </div>
-                                    <div className="col-md-6">
-                                        <strong>Gender:</strong> {donor.gender}
-                                    </div>
-                                </div>
+        <div>
+        
+            <div className='certificate'>
+                <img src={Certificate} alt='certi'/>
+                <div className='certificate-details'>
+               <h6> This is to certify that {donor.firstName} {donor.lastName} has made an invaluable gift by donating eyes and has helped us to move the
+bling from darkness to light. The kind gesture and concern for the suffering is worth emulating.This certificate
+conveys appreciation of the staff of the hospital and the gratitude our blind patients towards the Donor & their
+relatives.</h6>
 
-                                <div className="row mb-3">
-                                    <div className="col-md-6">
-                                        <strong>Date of Birth:</strong> {new Date(donor.dob).toLocaleDateString()}
-                                    </div>
-                                    <div className="col-md-6">
-                                        <strong>Mobile:</strong> {donor.mobileNo}
-                                    </div>
-                                </div>
-
-                                <div className="row mb-3">
-                                    <div className="col-12">
-                                        <strong>Address:</strong> {donor.address}
-                                    </div>
-                                </div>
-
-                                <div className="row mb-3">
-                                    <div className="col-md-6">
-                                        <strong>Postal Code:</strong> {donor.postalCode}
-                                    </div>
-                                    <div className="col-md-6">
-                                        <strong>Email:</strong> {donor.email}
-                                    </div>
-                                </div>
-
-                                <div className="row mb-3">
-                                    <div className="col-12">
-                                        <strong>Primary Diagnosis:</strong> {donor.primaryDiagnosis}
-                                    </div>
-                                </div>
-
-                                <div className="row mb-3">
-                                    <div className="col-md-6">
-                                        <strong>Emergency Contact (Relative):</strong>
-                                        <div>{donor.nameOfRelative}</div>
-                                        <div>{donor.phoneNoOfRelative}</div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <strong>Emergency Contact (Friend):</strong>
-                                        <div>{donor.nameOfFriend}</div>
-                                        <div>{donor.phoneOfFriend}</div>
-                                    </div>
-                                </div>
-
-                                <div className="text-center mt-4">
-                                    <button 
-                                        className="btn btn-primary"
-                                        onClick={() => window.print()}
-                                    >
-                                        Print Certificate
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
+            <button className="btn btn-primary" onClick={() => window.print()}> Print Certificate </button>
         </div>
     );
 };
