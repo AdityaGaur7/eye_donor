@@ -84,7 +84,7 @@ const navigate= useNavigate();
               <td>{donor.gender}</td>
               <td>{donor.address}</td>
               <td>{donor.association}</td>
-              <td>{donor.stateName || ''}</td>
+              <td>{donor.stateName || ''}</td> 
               <td>{donor.cityName || ''}</td> 
               <td>{donor.districtName || ''}</td>
               <td>{donor.postalCode}</td>
