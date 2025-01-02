@@ -4,7 +4,7 @@ import "./DonationForm.css";
 import {useNavigate} from 'react-router-dom'
 const DonationForm = () => {
   const [formData, setFormData] = useState({
-    association: "NONE",
+    association: "",
     firstName: "",
     lastName: "",
     gender: "",
@@ -19,7 +19,7 @@ const DonationForm = () => {
     phoneNoOfRelative: "",
     nameOfFriend: "",
     phoneOfFriend: "",
-    agreeToTerms: false, // Match with backend model
+    agreeToTerms: false,
   });
   const navigate = useNavigate();
 
@@ -35,12 +35,12 @@ const DonationForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/forms/submit-form", // Backend URL
+        "http://localhost:5000/api/forms/submit-form", // Replace with your backend URL
         formData
       );
       alert(response.data.message);
       setFormData({
-        association: "NONE",
+        association: "",
         firstName: "",
         lastName: "",
         gender: "",
@@ -55,7 +55,7 @@ const DonationForm = () => {
         phoneNoOfRelative: "",
         nameOfFriend: "",
         phoneOfFriend: "",
-        agreeToTerms: false, // Reset state
+        agreeToTerms: false,
       });
     } catch (error) {
       console.error("Error submitting form:", error);
