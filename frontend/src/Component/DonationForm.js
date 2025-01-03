@@ -67,16 +67,9 @@ const DonationForm = () => {
     <div className="container py-5">
       
       <div className="row justify-content-center">
-      <button 
-          className="btn btn-outline-primary w-50 m-4"
-          onClick={() => navigate('/form')}
-        >
-          Get List
-        </button>
         <div className="col-md-8">
           <div className="card shadow">
             <div className="card-body">
-              <h2 className="text-center mb-4">Eye Donation Form</h2>
               <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                   <div className="col-12">
@@ -109,7 +102,7 @@ const DonationForm = () => {
                     <label className="form-label">First Name:</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control1"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
@@ -121,7 +114,7 @@ const DonationForm = () => {
                     <label className="form-label">Last Name:</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control1"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
@@ -198,7 +191,7 @@ const DonationForm = () => {
                     <label className="form-label">Email ID:</label>
                     <input
                       type="email"
-                      className="form-control"
+                      className="form-control1"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -209,7 +202,7 @@ const DonationForm = () => {
                   <div className="col-12">
                     <label className="form-label">Address:</label>
                     <textarea
-                      className="form-control"
+                      className="form-control1"
                       name="address"
                       value={formData.address}
                       onChange={handleChange}
@@ -219,10 +212,10 @@ const DonationForm = () => {
                   </div>
 
                   <div className="col-md-6">
-                    <label className="form-label">Postal Code:</label>
+                    <label className="form-label1">Postal Code:</label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control1"
                       name="postalCode"
                       value={formData.postalCode}
                       onChange={handleChange}
@@ -300,9 +293,10 @@ const DonationForm = () => {
                         onChange={handleChange}
                         required
                       />
-                      <label className="form-check-label">
-                        I agree with terms for eye donation.
-                      </label>
+                      <div>
+                      I agree with terms for eye donation.
+                      </div>
+
                     </div>
                   </div>
 

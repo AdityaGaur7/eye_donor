@@ -1,138 +1,53 @@
-/* General Font Style for Table */
-table, th, td {
-    font-family: 'Arial', sans-serif;
+.container {
+    width: 50%;
+    margin: auto;
+    font-size: 13px;
+    padding: 20px;
+    background-color: #eeeeee;
 }
 
-/* Style for the donation list table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Style for table cells */
-th, td {
-    padding: 12px 20px;
-    text-align: left;
-    font-size: 16px;
-    border-right: 1px solid #ddd; /* Vertical column lines */
-    border-bottom: none; /* No horizontal row lines */
-}
-
-th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-td {
-    background-color: #f9f9f9;
-    color: #555;
-}
-
-/* Alternate row background color */
-tr:nth-child(even) td {
-    background-color: #f2f2f2;
-}
-
-/* Hover effect on table rows */
-tr:hover td {
-    background-color: #f1f1f1;
-}
-
-/* Table Heading Styles */
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Pagination Container */
-.pagination {
-    margin-top: 20px;
+.col-md-6, .col-12 {
     display: flex;
-    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    font-weight: bold;
+  
+    width: 30%;
+}
+
+input, textarea {
+    height: 12px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.form-control1{
+    width: 65%;
+}
+textarea {
+    height: 12px;
+    resize: none;
+}
+
+.form-check {
+    display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
-/* Pagination Buttons */
-.pagination button {
+button {
     padding: 10px 15px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
 }
 
-.pagination button:hover {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.pagination button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.pagination .active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-/* Single-Line Pagination Info */
-.pagination-info {
-    margin-right: 15px;
-    font-size: 16px;
-    color: #555;
-    white-space: nowrap; /* Prevents text wrapping */
-}
-
-/* Responsive Design for Smaller Screens */
-@media screen and (max-width: 768px) {
-    table {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 10px;
-    }
-
-    th {
-        font-size: 16px;
-    }
-
-    .pagination {
-        flex-wrap: wrap;
-    }
-
-    .pagination-info {
-        flex-basis: 100%;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    table {
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    .pagination button {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
+button:hover {
+    background-color: #0056b3;
 }
