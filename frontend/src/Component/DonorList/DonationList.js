@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './DonationList.css';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const DonationList = () => {
   const [donors, setDonors] = useState([]);
@@ -44,12 +44,7 @@ const DonationList = () => {
     <div className="donor-list-container">
       <div className="list-header">
         <h2>Donors List</h2>
-        {/* <button 
-          className="add-donor-btn"
-          onClick={() => navigate('/')}
-        >
-          Add Donor
-        </button> */}
+        
       </div>
 
       <div className="table-container">
@@ -65,13 +60,17 @@ const DonationList = () => {
               <th>District Name</th>
               <th>Postal Code</th>
               <th>Relative List</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {donors.map((donor, index) => (
               <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
-                <td>{donor.firstName} {donor.lastName}</td>
+                <td>
+                 <NavLink to = {`/generate-certificate/${donor._id}`} >
+                   {donor.firstName} {donor.lastName}
+                   </NavLink>
+
+                   </td>
                 <td>{donor.gender}</td>
                 <td>{donor.address}</td>
                 <td>{donor.association}</td>
@@ -80,14 +79,7 @@ const DonationList = () => {
                 <td>{donor.districtName || ''}</td>
                 <td>{donor.postalCode}</td>
                 <td>{donor.nameOfRelative} ({donor.phoneNoOfRelative})</td>
-                <td>
-                  <button 
-                    className="generate-cert-btn"
-                    onClick={() => navigate(`/generate-certificate/${donor._id}`)}
-                  >
-                    Generate Certificate
-                  </button>
-                </td>
+             
               </tr>
             ))}
           </tbody>
