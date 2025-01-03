@@ -1,176 +1,131 @@
-/* General Font Style for Table */
-table, th, td {
-    font-family: 'Arial', sans-serif; /* or any other font family of your choice */
+.donor-list-container {
+    padding: 20px;
+    background-color: #fff;
 }
 
-/* Style for the donation list table */
-table {
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.list-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.add-donor-btn {
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.donor-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
-/* Style for table cells */
-th, td {
-    padding: 12px 20px;
-    text-align: left;
-    font-size: 16px;
-    border-right: 1px solid #ddd; /* Adding right border to each cell (vertical column lines) */
-}
-
-/* Remove the row line */
-th, td {
-    border-bottom: none; /* No horizontal row lines */
-}
-
-th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-td {
-    background-color: #f9f9f9;
-    color: #555;
-}
-
-/* Alternate row background color */
-tr:nth-child(even) td {
-    background-color: #f2f2f2;
-}
-
-/* Hover effect on table rows */
-tr:hover td {
-    background-color: #f1f1f1;
-}
-
-/* Table Heading Styles */
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+.donor-table th {
+    background-color: #fff;
     color: #333;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
 }
 
-/* Pagination Container */
-.pagination {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.pagination button {
-    padding: 10px 15px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-}
-
-.pagination button:hover {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.pagination button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.pagination .active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.pagination p {
-    font-size: 16px;
-    color: #555;
-    margin-top: 10px;
-}
-
-/* Responsive Design for Smaller Screens */
-@media screen and (max-width: 768px) {
-    table {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 10px;
-    }
-
-    th {
-        font-size: 16px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    table {
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-}
-
-.table {
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 8px;
-}
-
-.table thead th {
-    background-color: #2c3e50;
-    color: white;
+.donor-table td {
+    padding: 12px;
+    color: #666;
     border-bottom: none;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0,0,0,.02);
+.even-row {
+    background-color: #f9f9f9;
 }
 
-.table td, .table th {
-    padding: 1rem;
-    vertical-align: middle;
+.odd-row {
+    background-color: #fff;
+}
+
+.generate-cert-btn {
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.generate-cert-btn:hover {
+    /* background-color: #007bff; */
+    color: #020202;
 }
 
 .pagination {
-    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 20px;
+    font-size: 14px;
 }
 
-.page-link {
-    color: #2c3e50;
-    border-color: #dee2e6;
+.page-btn {
+    padding: 4px 8px;
+    background-color: transparent;
+    border: none;
+    color: #0066cc;
+    cursor: pointer;
+    min-width: 24px;
+    text-align: center;
 }
 
-.page-item.active .page-link {
-    background-color: #2c3e50;
-    border-color: #2c3e50;
+.page-btn:hover {
+    text-decoration: underline;
 }
 
-.page-link:hover {
-    color: #1a252f;
-    background-color: #e9ecef;
-    border-color: #dee2e6;
+.page-btn.active {
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: default;
 }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+.page-btn:disabled {
+    color: #999;
+    cursor: not-allowed;
+    text-decoration: none;
 }
 
-.container-fluid {
-    max-width: 1400px;
+.page-info {
+    color: #666;
+    font-size: 14px;
+    margin-left: 8px;
 }
 
-@media (max-width: 768px) {
-    .table-responsive {
-        border-radius: 8px;
+@media screen and (max-width: 768px) {
+    .donor-table {
+        font-size: 14px;
+    }
+
+    .donor-table th,
+    .donor-table td {
+        padding: 8px;
+    }
+
+    .generate-cert-btn {
+        padding: 4px 8px;
+        font-size: 12px;
     }
 }

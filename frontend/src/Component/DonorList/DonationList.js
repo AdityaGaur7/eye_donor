@@ -8,8 +8,8 @@ const DonationList = () => {
   const [totalDonors, setTotalDonors] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-const navigate= useNavigate();
-  // Fetch Donors with Pagination
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchDonors = async () => {
       try {
@@ -22,104 +22,118 @@ const navigate= useNavigate();
     };
     fetchDonors();
   }, [currentPage, itemsPerPage]);  
+
   const formatDate = (date) => {
     const d = new Date(date);
     const months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
     const day = d.getDate();
     const month = months[d.getMonth()];
     const year = d.getFullYear();
-    let hour = d.getHours();
-    const minute = d.getMinutes();
-    const second = d.getSeconds();
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-
-    hour = hour % 12;
-    hour = hour ? hour : 12;
-    const formattedMinute = minute < 10 ? '0' + minute : minute;
-    const formattedSecond = second < 10 ? '0' + second : second;
-
-    return `${day}/${month}/${year} ${hour}:${formattedMinute}:${formattedSecond} ${ampm}`;
+    return `${day}/${month}/${year}`;
   };
 
-  // Handle Page Change
   const changePage = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= Math.ceil(totalDonors / itemsPerPage)) {
       setCurrentPage(pageNumber);
     }
   };
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(totalDonors / itemsPerPage);
 
   return (
-    <div>
-      <h2>Donors List</h2>
-      <button 
-          className="btn btn-outline-secondary m-4"
+    <div className="donor-list-container">
+      <div className="list-header">
+        <h2>Donors List</h2>
+        {/* <button 
+          className="add-donor-btn"
           onClick={() => navigate('/')}
         >
           Add Donor
-        </button>
-      <table>
-        <thead>
-          <tr>
-            <th>Donor Name</th>
-            <th>Gender</th>
-            <th>Address</th>
-            <th>Association</th>
-            <th>State Name</th>
-            <th>City Name</th>
-            <th>District Name</th>
-            <th>Postal Code</th>
-            <th>Relative List</th>
-            <th>Submission Date</th>
-            <th>Actions</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          {donors.map((donor, index) => (
-            <tr key={index}>
-              <td>{donor.firstName} {donor.lastName}</td>
-              <td>{donor.gender}</td>
-              <td>{donor.address}</td>
-              <td>{donor.association}</td>
-              <td>{donor.stateName || ''}</td> 
-              <td>{donor.cityName || ''}</td> 
-              <td>{donor.districtName || ''}</td>
-              <td>{donor.postalCode}</td>
-              <td>{donor.nameOfRelative} ({donor.phoneNoOfRelative})</td>
-              <td>{formatDate(donor.submittedAt)}</td>
-              <td> <button 
-          className="btn btn-outline-primary m-4"
-          onClick={() => navigate(`/generate-certificate/${donor._id}`)}
-        >Generate Certificate
-        </button></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Pagination Controls */}
-      <div className="pagination">
-        <button onClick={() => changePage(currentPage - 1)} disabled={currentPage === 1}>
-          Prev
-        </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index}
-            onClick={() => changePage(index + 1)}
-            className={index + 1 === currentPage ? 'active' : ''}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button onClick={() => changePage(currentPage + 1)} disabled={currentPage === totalPages}>
-          Next
-        </button>
+        </button> */}
       </div>
 
-      <p>Page {currentPage} of {totalPages} ({totalDonors} items)</p>
+      <div className="table-container">
+        <table className="donor-table">
+          <thead>
+            <tr>
+              <th>Donor Name</th>
+              <th>Gender</th>
+              <th>Address</th>
+              <th>Associator</th>
+              <th>State Name</th>
+              <th>City Name</th>
+              <th>District Name</th>
+              <th>Postal Code</th>
+              <th>Relative List</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {donors.map((donor, index) => (
+              <tr key={index} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                <td>{donor.firstName} {donor.lastName}</td>
+                <td>{donor.gender}</td>
+                <td>{donor.address}</td>
+                <td>{donor.association}</td>
+                <td>{donor.stateName || ''}</td>
+                <td>{donor.cityName || ''}</td>
+                <td>{donor.districtName || ''}</td>
+                <td>{donor.postalCode}</td>
+                <td>{donor.nameOfRelative} ({donor.phoneNoOfRelative})</td>
+                <td>
+                  <button 
+                    className="generate-cert-btn"
+                    onClick={() => navigate(`/generate-certificate/${donor._id}`)}
+                  >
+                    Generate Certificate
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="pagination">
+        <span>Page {currentPage} of {totalPages} ({totalDonors} items)</span>
+        <button 
+          className="page-btn"
+          onClick={() => changePage(currentPage - 1)} 
+          disabled={currentPage === 1}
+        >
+          «
+        </button>
+        {[...Array(totalPages)].map((_, index) => {
+          if (
+            index === 0 ||
+            index === totalPages - 1 ||
+            (index >= currentPage - 2 && index <= currentPage + 2)
+          ) {
+            return (
+              <button
+                key={index}
+                className={`page-btn ${index + 1 === currentPage ? 'active' : ''}`}
+                onClick={() => changePage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            );
+          } else if (
+            index === currentPage - 3 || 
+            index === currentPage + 3
+          ) {
+            return <span key={index}>...</span>;
+          }
+          return null;
+        })}
+        <button 
+          className="page-btn"
+          onClick={() => changePage(currentPage + 1)} 
+          disabled={currentPage === totalPages}
+        >
+          »
+        </button>
+      </div>
     </div>
   );
 };
