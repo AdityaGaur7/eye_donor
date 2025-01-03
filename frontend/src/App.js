@@ -2,7 +2,7 @@ import React from 'react';
 import DonationForm from './Component/DonationForm';
 import DonationList from './Component/DonorList/DonationList'; // Add this import
 import GenerateCertificate from './Component/GenerateCertificate';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router ,Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<DonationForm />} /> {/* Default route, renders DonationForm */}
           <Route path="/donors" element={<DonationList />} />  {/* Donor list route, renders DonationList */}
+          <Route path="/generate-certificate/:id" element={<GenerateCertificate />} />  {/* Donor list route, renders DonationList */}
         </Routes>
       </div>
     </Router>

@@ -301,7 +301,7 @@ const DonationForm = () => {
                   </div>
 
                   <div className="col-12">
-                    <button type="submit" className="btn btn-primary w-100" onClick={()=>navigate('/form')}>
+                    <button type="submit" className="btn btn-primary w-100" onClick={()=>navigate('/donors')}>
                       Submit
                     </button>
                   </div>
